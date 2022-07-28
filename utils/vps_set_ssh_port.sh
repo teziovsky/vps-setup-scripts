@@ -24,3 +24,5 @@ else
 fi
 
 cat $SSHD_FILE
+
+sudo systemctl restart sshd
