@@ -3,8 +3,8 @@ echo
 read -p "Enter SSH Port Number: " READ_SSH_PORT
 SSH_PORT=${READ_SSH_PORT:-10022}
 
-SSHD_FILE=/etc/ssh/sshd_config
-SSHD_BACKUP_FILE=/etc/ssh/sshd_config.backup
+SSHD_FILE="/etc/ssh/sshd_config"
+SSHD_BACKUP_FILE="/etc/ssh/sshd_config.backup"
 if [ ! -f "$SSHD_BACKUP_FILE" ]; then
     sudo cp $SSHD_FILE $SSHD_BACKUP_FILE
 else
@@ -12,15 +12,15 @@ else
 fi
 
 if grep -q "#Port 22" "$SSHD_FILE"; then
-    sed -i "s/#Port 22/Port ${SSH_PORT}/g" $SSHD_FILE
+    sudo sed -i "s/#Port 22/Port ${SSH_PORT}/g" $SSHD_FILE
 else
-    echo "Port ${SSH_PORT}" >> $SSHD_FILE
+    sudo echo "Port ${SSH_PORT}" >> $SSHD_FILE
 fi
 
 if grep -q "PremitRootLogin yes" "$SSHD_FILE"; then
-    sed -i "s/PremitRootLogin yes/PremitRootLogin no/g" $SSHD_FILE
+    sudo sed -i "s/PremitRootLogin yes/PremitRootLogin no/g" $SSHD_FILE
 else
-    echo "PremitRootLogin no" >> $SSHD_FILE
+    sudo echo "PremitRootLogin no" >> $SSHD_FILE
 fi
 
 cat $SSHD_FILE
