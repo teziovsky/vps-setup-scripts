@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
-# Tworzenie nowego uzytkownika, z dostepem do sudo i kopia authorized_keys
+# CREATE NEW USER WITH SUDO ACCESS AND COPY OF AUTHORIZED_KEYS
 
 # IF NO SUDO, THEN EXIT
-if [ "$(id -u)" != "0" ]; then
-    echo "Musisz uruchomić ten skrypt jako root" 1>&2
-    echo "Spróbuj sudo $0"
-    exit 1
-fi
+source ./vps_check_sudo.sh
 
 checkIfUserExists() {
     GIVEN_USER=$1

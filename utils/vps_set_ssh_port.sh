@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# IF NO SUDO, THEN EXIT
+source ./vps_check_sudo.sh
+
 # SET NEW SSH PORT NUMBER
 echo
 read -p "Enter SSH Port Number: " READ_SSH_PORT
