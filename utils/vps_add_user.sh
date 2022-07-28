@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
-# CREATE NEW USER WITH SUDO ACCESS AND COPY OF AUTHORIZED_KEYS
+#!/bin/bash
+# AUTHORS: Radoslaw Karasinski, Grzegorz Ćwikliński, Szymon Hryszko, Artur Stefański
+# MODIFIED BY: Jakub Soboczyński
 
 # IF NO SUDO, THEN EXIT
 source ./vps_check_sudo.sh
@@ -61,26 +62,26 @@ checkIfUserExists $USERNAME
 passwordGet $USERNAME_ARG
 
 
-# stworz nowego uzytkownika
-sudo useradd -m -p $(openssl passwd -1 $PASSWORD) -s /bin/bash "$USERNAME" && echo "Uzytkownik $USERNAME zostal stworzony 🎉"
+# CREATE NEW USER
+sudo useradd -m -p $(openssl passwd -1 $PASSWORD) -s /bin/bash "$USERNAME"
 
-# dodaj nowego uzytkownika do sudo
+# ADD NEW USER TO SUDO
 sudo usermod -aG sudo $USERNAME
 
 SSH_DIR="/home/$USERNAME/.ssh"
 
-# stworz folder na ustawienia ssh oraz ustaw odpowiednie prawa
+# CREATE DIRECTORY FOR SSH AND SET PERMISSIONS
 sudo mkdir -p $SSH_DIR
 sudo chmod 700 $SSH_DIR
 
-# stworz authorized_keys oraz ustaw odpowiednie prawa
+# CREATE authorized_keys AND SET PERMISSIONS
 sudo touch $SSH_DIR/authorized_keys
 sudo chmod 600 $SSH_DIR/authorized_keys
 
-# zmien wlasciciela folderu i plikow
+# CHANGE OWNER OF DIRECTORY AND FILES
 sudo chown -R $USERNAME:$USERNAME $SSH_DIR
 
-# skopiuj klucze obecnego uzytkownika do nowo stworzoneg
+# COPY KEYS FROM ACTUAL USER TO NEW USER
 cat ~/.ssh/authorized_keys 2>&1 | sudo tee -a $SSH_DIR/authorized_keys >/dev/null
 
-echo "Pomyślnie stworzono użytkownia ${USERNAME}."
+echo "Pomyślnie stworzono użytkownia ${USERNAME} 🎉"
