@@ -2,7 +2,7 @@
 
 # SET NEW SSH PORT NUMBER
 echo
-read -p -r "Enter SSH Port Number: " READ_SSH_PORT
+read -p "Enter SSH Port Number: " READ_SSH_PORT
 SSH_PORT=${READ_SSH_PORT:-10022}
 
 SSHD_FILE="/etc/ssh/sshd_config"
