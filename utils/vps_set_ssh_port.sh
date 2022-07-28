@@ -25,13 +25,13 @@ else
     echo "Port ${SSH_PORT}" | sudo tee -a $SSHD_FILE
 fi
 
-if grep -q "PremitRootLogin yes" "$SSHD_FILE"; then
-    sudo sed -i "s/PremitRootLogin yes/PremitRootLogin no/g" $SSHD_FILE
+if grep -q "PermitRootLogin yes" "$SSHD_FILE"; then
+    sudo sed -i "s/PermitRootLogin yes/PermitRootLogin no/g" $SSHD_FILE
 
-    elif grep -q "PremitRootLogin no" "$SSHD_FILE"; then
-    echo "PremitRootLogin already set 👌"
+    elif grep -q "PermitRootLogin no" "$SSHD_FILE"; then
+    echo "PermitRootLogin already set 👌"
 else
-    echo "PremitRootLogin no" | sudo tee -a $SSHD_FILE
+    echo "PermitRootLogin no" | sudo tee -a $SSHD_FILE
 fi
 
 cat $SSHD_FILE
