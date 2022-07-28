@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # IF NO SUDO, THEN EXIT
 if [ "$(id -u)" != "0" ]; then
     echo "Musisz uruchomić ten skrypt jako root" 1>&2
@@ -9,9 +8,13 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # UPDATE SYSTEM
-sudo apt update -y && sudo apt upgrade -y
-echo
-echo "System updated! 🎉"
+source vps_update_system.sh
+
+# INSTALL GIT
+source vps_install_git.sh
+
+# SET GIT GLOBAL CONFIG
+
 
 # SET NEW SSH PORT NUMBER
 read -p "Enter SSH Port Number: " READ_SSH_PORT
