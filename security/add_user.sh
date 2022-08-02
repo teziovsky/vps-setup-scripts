@@ -54,7 +54,7 @@ passwordGet(){
     done
 }
 
-read -n 1 -p "Podaj nazwę użytkownika: " USERNAME
+read -p "Podaj nazwę użytkownika: " USERNAME
 USERNAME_ARG=0
 
 checkIfUserBlank $USERNAME

@@ -22,10 +22,10 @@ sudo git clone https://github.com/teziovsky/vps-setup-scripts.git /opt/vps-setup
 cd /opt/vps-setup-scripts
 
 # ADD USER
-source ./security/add_user.sh
+/bin/bash ./security/add_user.sh
 
 # SET NEW SSH PORT
-source ./security/set_ssh_port.sh
+/bin/bash ./security/set_ssh_port.sh
 
-read -n 1 -p "Please login as $USERNAME on port ${SSH_PORT}"
+read -p "Please login as $USERNAME on port ${SSH_PORT}"
 # exit
