@@ -13,5 +13,6 @@ source ./security/add_user.sh
 # SET NEW SSH PORT
 source ./security/set_ssh_port.sh
 
+echo
 read -p "Please login as $USERNAME on port ${SSH_PORT}"
-# exit
+exit
