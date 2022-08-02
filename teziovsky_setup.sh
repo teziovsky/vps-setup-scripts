@@ -8,13 +8,13 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # UPDATE SYSTEM
-sudo /bin/bash ./security/update_system.sh
+source ./security/update_system.sh
 
 # INSTALL GIT
-sudo /bin/bash ./tools/install_git.sh
+source ./tools/install_git.sh
 
 # INSTALL ZSH
-sudo /bin/bash ./tools/install_zsh.sh
+source ./tools/install_zsh.sh
 
 # INSTALL DOCKER
-sudo /bin/bash ./install_docker.sh
+source ./install_docker.sh
