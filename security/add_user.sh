@@ -32,7 +32,7 @@ passwordGet(){
             read -s -p "Podaj hasło (zostaw puste aby wygenerować): " PASSWORD
             echo
         fi
-        
+
         # CHECK IF PASSWORD IS BLANK
         if [ -z "$PASSWORD" ]; then
             # GENERATE PASSWORD
@@ -40,10 +40,10 @@ passwordGet(){
             echo "Twoje hasło to $PASSWORD"
             break
         fi
-        
+
         read -sp 'Powtórz hasło: ' PASSWORD_REPEAT
         echo
-        
+
         # if passwords are equal
         if [ "$PASSWORD" == "$PASSWORD_REPEAT" ]; then
             break
@@ -53,13 +53,8 @@ passwordGet(){
     done
 }
 
-if ! [ -z "$1" ]; then
-    USERNAME=$1
-    USERNAME_ARG=1
-else
-    read -p "Podaj nazwę użytkownika: " USERNAME
-    USERNAME_ARG=0
-fi
+read -p "Podaj nazwę użytkownika: " USERNAME
+USERNAME_ARG=0
 
 checkIfUserBlank $USERNAME
 checkIfUserExists $USERNAME
