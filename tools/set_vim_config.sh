@@ -25,5 +25,5 @@ if [ ! -f "$VIM_CONFIG_FILE" ]; then
     echo "VIM Config updated 🎉"
 else
     echo
-    echo "'$VIM_CONFIG_FILE' – already exists! 👌🏼"
+    echo "$VIM_CONFIG_FILE – already exists! 👌🏼"
 fi

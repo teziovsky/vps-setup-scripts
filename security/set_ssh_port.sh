@@ -18,7 +18,7 @@ if [ ! -f "$SSHD_BACKUP_FILE" ]; then
     sudo cp $SSHD_FILE $SSHD_BACKUP_FILE
 else
     echo
-    echo "'$SSHD_BACKUP_FILE' – Backup already exists! 👌"
+    echo "$SSHD_BACKUP_FILE – Backup already exists! 👌"
 fi
 
 if grep -q "#Port 22" "$SSHD_FILE"; then

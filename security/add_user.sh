@@ -20,6 +20,7 @@ checkIfUserExists() {
 checkIfUserBlank() {
     GIVEN_USER=$1
     if [ -z "$1" ]; then
+        echo
         echo "Nie podałeś nazwy użytkownika!"
         exit 1
     fi
@@ -32,7 +33,7 @@ passwordGet(){
             read -s -p "Podaj hasło (zostaw puste aby wygenerować): " PASSWORD
             echo
         fi
-        
+
         # CHECK IF PASSWORD IS BLANK
         if [ -z "$PASSWORD" ]; then
             # GENERATE PASSWORD
@@ -40,10 +41,10 @@ passwordGet(){
             echo "Twoje hasło to $PASSWORD"
             break
         fi
-        
+
         read -sp 'Powtórz hasło: ' PASSWORD_REPEAT
         echo
-        
+
         # if passwords are equal
         if [ "$PASSWORD" == "$PASSWORD_REPEAT" ]; then
             break
@@ -53,7 +54,8 @@ passwordGet(){
     done
 }
 
-read -n 1 -p "Podaj nazwę użytkownika: " USERNAME
+printf "Podaj nazwę użytkownika:"
+read USERNAME
 USERNAME_ARG=0
 
 checkIfUserBlank $USERNAME
