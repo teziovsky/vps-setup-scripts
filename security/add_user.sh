@@ -74,12 +74,14 @@ SSH_DIR="/home/$USERNAME/.ssh"
 sudo mkdir -p $SSH_DIR
 sudo chmod 700 $SSH_DIR
 
-# CREATE authorized_keys AND SET PERMISSIONS
+# CREATE authorized_keys
 sudo touch $SSH_DIR/authorized_keys
-sudo chmod 600 $SSH_DIR/authorized_keys
 
 # COPY KEYS FROM ACTUAL USER TO NEW USER
 sudo cat ~/.ssh/authorized_keys 2>&1 | sudo tee -a $SSH_DIR/authorized_keys > /dev/null
+
+#SET PERMISSIONS FOR authorized_keys
+sudo chmod 600 $SSH_DIR/authorized_keys
 
 # CHANGE OWNER OF DIRECTORY AND FILES
 sudo chown -R $USERNAME:$USERNAME $SSH_DIR
