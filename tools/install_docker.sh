@@ -3,23 +3,24 @@
 # INSTALL DOCKER
 if ! command -v docker &> /dev/null
 then
-    sudo apt update -y
-    sudo apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
+    # Update the apt package index and install packages to allow apt to use a repository over HTTPS
+    sudo apt-get update -y
+    sudo apt-get install -y ca-certificates curl gnupg lsb-release
 
-    # Dodanie oficjalnego klucza GPG Dockera
-    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    # Add Docker’s official GPG key
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
-    # Dodanie oficjalnych repozytorium Dockera do systmeu
+    # Use the following command to set up the repository
     echo \
-    "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-    sudo apt update -y
-    # Instalacja dockera
-    sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose
+    # Update the apt package index, and install the latest version of Docker Engine, containerd, and Docker Compose
+    sudo apt-get update -y
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-    # Sprawdzenie czy Docker został prawidłowo zainstalowany
-    docker run hello-world
+    sudo docker run hello-world
 else
     echo
     echo "Docker already installed 🎉"

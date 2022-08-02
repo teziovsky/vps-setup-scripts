@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# UPDATE SYSTEM
-source ./security/update_system.sh
-
 # INSTALL GIT
 source ./tools/install_git.sh
 

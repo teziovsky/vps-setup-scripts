@@ -15,4 +15,3 @@ source ./security/set_ssh_port.sh
 
 echo
 read -p "Please login again via SSH as $USERNAME on port ${SSH_PORT}"
-exit

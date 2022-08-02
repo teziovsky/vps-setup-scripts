@@ -36,4 +36,4 @@ else
 fi
 
 # SET ZSH AS DEFAULT SHELL
-chsh -s /bin/zsh "$USER"
+sudo chsh -s /bin/zsh "$USER"
