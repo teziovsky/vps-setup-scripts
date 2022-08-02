@@ -8,12 +8,12 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # UPDATE SYSTEM
-sudo apt-get update -y && sudo apt-get upgrade -y
+sudo apt-get update -qq -y && sudo apt-get upgrade -qq -y
 echo
 echo "System updated! 🎉"
 
 # INSTALL GIT
-sudo apt-get install git -y
+sudo apt-get install -qq git -y
 echo
 echo "Git installed 🎉"
 

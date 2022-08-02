@@ -2,7 +2,7 @@
 
 if ! command -v vim &> /dev/null
 then
-    sudo apt-get install -y vim
+    sudo apt-get install -qq -y vim
     echo
     echo "VIM installed 🎉"
 else

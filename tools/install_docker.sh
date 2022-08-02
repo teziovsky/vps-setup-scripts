@@ -4,8 +4,8 @@
 if ! command -v docker &> /dev/null
 then
     # Update the apt package index and install packages to allow apt to use a repository over HTTPS
-    sudo apt-get update -y
-    sudo apt-get install -y ca-certificates curl gnupg lsb-release
+    sudo apt-get update -qq -y
+    sudo apt-get install -qq -y ca-certificates curl gnupg lsb-release
 
     # Add Docker’s official GPG key
     sudo mkdir -p /etc/apt/keyrings
@@ -17,11 +17,18 @@ then
     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
     # Update the apt package index, and install the latest version of Docker Engine, containerd, and Docker Compose
-    sudo apt-get update -y
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+    sudo apt-get update -qq -y
+    sudo apt-get install -qq -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+    sudo groupadd docker
+
+    sudo usermod -aG docker $USER
 
     sudo docker run hello-world
+
+    echo
+    echo "Docker installed 🎉"
 else
     echo
-    echo "Docker already installed 🎉"
+    echo "Docker already installed 👌"
 fi
