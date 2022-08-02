@@ -78,11 +78,11 @@ sudo chmod 700 $SSH_DIR
 sudo touch $SSH_DIR/authorized_keys
 sudo chmod 600 $SSH_DIR/authorized_keys
 
-# CHANGE OWNER OF DIRECTORY AND FILES
-sudo chown -R $USERNAME:$USERNAME $SSH_DIR
-
 # COPY KEYS FROM ACTUAL USER TO NEW USER
 sudo cat ~/.ssh/authorized_keys 2>&1 | sudo tee -a $SSH_DIR/authorized_keys > /dev/null
+
+# CHANGE OWNER OF DIRECTORY AND FILES
+sudo chown -R $USERNAME:$USERNAME $SSH_DIR
 
 echo
 echo "Pomyślnie stworzono użytkownia ${USERNAME} 🎉"
