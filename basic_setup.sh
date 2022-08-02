@@ -17,6 +17,8 @@ sudo apt-get install -qq git -y
 echo
 echo "Git installed 🎉"
 
-sudo git clone https://github.com/teziovsky/vps-setup-scripts.git /opt/vps-setup-scripts
+sudo git clone -q https://github.com/teziovsky/vps-setup-scripts.git /opt/vps-setup-scripts
+echo
+echo "Cloned scripts repository 🎉"
 
 cd /opt/vps-setup-scripts

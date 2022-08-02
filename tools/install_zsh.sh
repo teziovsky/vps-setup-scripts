@@ -22,6 +22,9 @@ then
     wget -q https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O- | sh
     echo
     echo "oh-my-zsh installed 🎉"
+else
+    echo
+    echo "oh-my-zsh already installed 👌"
 fi
 
 # INSTALL zsh-syntax-highlighting

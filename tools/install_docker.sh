@@ -22,13 +22,14 @@ then
 
     sudo groupadd docker
 
-    sudo usermod -aG docker $USER
-
     sudo docker run hello-world
 
     echo
     echo "Docker installed 🎉"
+    echo
+    echo "Login again to complete installation!"
 else
+    sudo usermod -aG docker $USER
     echo
     echo "Docker already installed 👌"
 fi
