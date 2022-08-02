@@ -8,13 +8,13 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # UPDATE SYSTEM
-source ./utils/update_system.sh
+source ./security/update_system.sh
 
 # INSTALL GIT
 source ./utils/install_git.sh
 
-# ADD USER
-source ./utils/add_user.sh
+# INSTALL ZSH
+source ./utils/install_zsh.sh
 
-# SET NEW SSH PORT
-source ./utils/set_ssh_port.sh
+# INSTALL DOCKER
+source ./

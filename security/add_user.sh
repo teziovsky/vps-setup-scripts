@@ -88,4 +88,5 @@ sudo chown -R $USERNAME:$USERNAME $SSH_DIR
 # COPY KEYS FROM ACTUAL USER TO NEW USER
 cat ~/.ssh/authorized_keys 2>&1 | sudo tee -a $SSH_DIR/authorized_keys >/dev/null
 
+echo
 echo "Pomyślnie stworzono użytkownia ${USERNAME} 🎉"

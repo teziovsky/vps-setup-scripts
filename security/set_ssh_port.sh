@@ -56,4 +56,4 @@ fi
 
 sudo systemctl restart sshd
 echo
-echo "SSH Port changed to ${SSH_PORT} 🎉"
+echo "SSH Port is set to ${SSH_PORT} 🎉"

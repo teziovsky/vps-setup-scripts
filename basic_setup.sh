@@ -19,4 +19,12 @@ echo "Git installed 🎉"
 
 sudo git clone https://github.com/teziovsky/vps-setup-scripts.git /opt/vps-setup-scripts
 
-(cd /opt/vps-setup-scripts && ./user_setup.sh)
+cd /opt/vps-setup-scripts
+
+# ADD USER
+source ./security/add_user.sh
+
+# SET NEW SSH PORT
+source ./security/set_ssh_port.sh
+
+read -p "Please login as $USERNAME on port ${SSH_PORT}"

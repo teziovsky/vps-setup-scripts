@@ -18,7 +18,7 @@ fi
 # SET GITCONFIG
 GITCONFIG_FILE="~/.gitconfig"
 if [ ! -f "$GITCONFIG_FILE" ]; then
-    sudo wget -q - https://raw.githubusercontent.com/teziovsky/dotfiles/main/.gitconfig
+    sudo wget -q -O - https://raw.githubusercontent.com/teziovsky/dotfiles/main/.gitconfig > ~/.gitconfig
 else
     echo
     echo ".gitconfig already exists! 👌"
