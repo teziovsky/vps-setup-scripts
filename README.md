@@ -19,3 +19,9 @@ source <(curl -s https://raw.githubusercontent.com/teziovsky/vps-setup-scripts/m
 ```bash
 . security_setup.sh
 ```
+
+`if you want install tools, login to your account and run`
+
+```bash
+cd /opt/vps-setup-scripts && ./tools_setup.sh
+```
