@@ -69,7 +69,8 @@ sudo useradd -m -p $(openssl passwd -1 $PASSWORD) -s /bin/bash "$USERNAME"
 sudo usermod -aG sudo $USERNAME
 
 SSH_DIR="/home/$USERNAME/.ssh"
-
+echo "${USERNAME}"
+echo "${SSH_DIR}"
 # CREATE DIRECTORY FOR SSH AND SET PERMISSIONS
 sudo mkdir -p $SSH_DIR
 sudo chmod 700 $SSH_DIR
