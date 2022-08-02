@@ -3,11 +3,7 @@
 # MODIFIED BY: Jakub Soboczyński
 
 # IF NO SUDO, THEN EXIT
-if [ "$(id -u)" != "0" ]; then
-    echo "Musisz uruchomić ten skrypt jako root" 1>&2
-    echo "Spróbuj sudo $0"
-    exit 1
-fi
+sudo /bin/bash ../utils/check_sudo.sh
 
 checkIfUserExists() {
     GIVEN_USER=$1
@@ -32,7 +28,7 @@ passwordGet(){
             read -s -p "Podaj hasło (zostaw puste aby wygenerować): " PASSWORD
             echo
         fi
-
+        
         # CHECK IF PASSWORD IS BLANK
         if [ -z "$PASSWORD" ]; then
             # GENERATE PASSWORD
@@ -40,10 +36,10 @@ passwordGet(){
             echo "Twoje hasło to $PASSWORD"
             break
         fi
-
+        
         read -sp 'Powtórz hasło: ' PASSWORD_REPEAT
         echo
-
+        
         # if passwords are equal
         if [ "$PASSWORD" == "$PASSWORD_REPEAT" ]; then
             break

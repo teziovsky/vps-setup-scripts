@@ -1,11 +1,7 @@
 #!/bin/bash
 
 # IF NO SUDO, THEN EXIT
-if [ "$(id -u)" != "0" ]; then
-    echo "Musisz uruchomić ten skrypt jako root" 1>&2
-    echo "Spróbuj sudo $0"
-    exit 1
-fi
+sudo /bin/bash ./utils/check_sudo.sh
 
 # UPDATE SYSTEM
 sudo apt-get update -y && sudo apt-get upgrade -y
@@ -22,9 +18,9 @@ sudo git clone https://github.com/teziovsky/vps-setup-scripts.git /opt/vps-setup
 cd /opt/vps-setup-scripts
 
 # ADD USER
-source ./security/add_user.sh
+sudo /bin/bash ./security/add_user.sh
 
 # SET NEW SSH PORT
-source ./security/set_ssh_port.sh
+sudo /bin/bash ./security/set_ssh_port.sh
 
 read -p "Please login as $USERNAME on port ${SSH_PORT}"
