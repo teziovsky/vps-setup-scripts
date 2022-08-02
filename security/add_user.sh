@@ -69,8 +69,7 @@ sudo useradd -m -p $(openssl passwd -1 $PASSWORD) -s /bin/bash "$USERNAME"
 sudo usermod -aG sudo $USERNAME
 
 SSH_DIR="/home/$USERNAME/.ssh"
-echo "${USERNAME}"
-echo "${SSH_DIR}"
+
 # CREATE DIRECTORY FOR SSH AND SET PERMISSIONS
 sudo mkdir -p $SSH_DIR
 sudo chmod 700 $SSH_DIR
@@ -80,6 +79,8 @@ sudo cp ~/.ssh/authorized_keys $SSH_DIR/authorized_keys
 
 # CHANGE OWNER OF DIRECTORY AND FILES
 sudo chown -R $USERNAME:$USERNAME $SSH_DIR
+
+# SET PERMISSIONS OF authorized_keys
 sudo chmod 600 $SSH_DIR/authorized_keys
 
 echo

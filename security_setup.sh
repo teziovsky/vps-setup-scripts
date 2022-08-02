@@ -14,5 +14,5 @@ source ./security/add_user.sh
 source ./security/set_ssh_port.sh
 
 echo
-read -p "Please login as $USERNAME on port ${SSH_PORT}"
+read -p "Please login again via SSH as $USERNAME on port ${SSH_PORT}"
 exit

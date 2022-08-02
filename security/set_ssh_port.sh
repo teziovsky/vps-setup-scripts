@@ -23,7 +23,7 @@ fi
 
 if grep -q "#Port 22" "$SSHD_FILE"; then
     sudo sed -i "s/#Port 22/Port ${SSH_PORT}/g" $SSHD_FILE
-    
+
     elif grep -q "Port ${SSH_PORT}" "$SSHD_FILE"; then
     echo
     echo "Port already set 👌"
@@ -34,7 +34,7 @@ fi
 
 if grep -q "PermitRootLogin yes" "$SSHD_FILE"; then
     sudo sed -i "s/PermitRootLogin yes/PermitRootLogin no/g" $SSHD_FILE
-    
+
     elif grep -q "PermitRootLogin no" "$SSHD_FILE"; then
     echo
     echo "PermitRootLogin already set 👌"
@@ -45,7 +45,7 @@ fi
 
 if grep -q "PasswordAuthentication yes" "$SSHD_FILE"; then
     sudo sed -i "s/PasswordAuthentication yes/PasswordAuthentication no/g" $SSHD_FILE
-    
+
     elif grep -q "PasswordAuthentication no" "$SSHD_FILE"; then
     echo
     echo "PasswordAuthentication already set 👌"
