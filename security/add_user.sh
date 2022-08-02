@@ -74,8 +74,19 @@ SSH_DIR="/home/$USERNAME/.ssh"
 sudo mkdir -p $SSH_DIR
 sudo chmod 700 $SSH_DIR
 
-# COPY authorized_keys FROM EXISTING USER
-sudo cp ~/.ssh/authorized_keys $SSH_DIR/authorized_keys
+# COPY authorized_keys FROM EXISTING USER OR DEFAULT USER
+ROOT_AUTHORIZED_KEYS="/root/.ssh/authorized_keys"
+DEBIAN_AUTHORIZED_KEYS="/home/debian/.ssh/authorized_keys"
+
+if grep -q "ssh" "$ROOT_AUTHORIZED_KEYS"; then
+    sudo cp $ROOT_AUTHORIZED_KEYS $SSH_DIR/authorized_keys
+
+    elif grep -q "ssh" "$DEBIAN_AUTHORIZED_KEYS"; then
+    sudo cp $DEBIAN_AUTHORIZED_KEYS $SSH_DIR/authorized_keys
+else
+    echo
+    echo "There is not a valid authorized_keys file 🤷🏼‍♂️"
+fi
 
 # CHANGE OWNER OF DIRECTORY AND FILES
 sudo chown -R $USERNAME:$USERNAME $SSH_DIR
