@@ -16,5 +16,8 @@ source ./tools/install_git.sh
 # INSTALL ZSH
 source ./tools/install_zsh.sh
 
+# SET VIM CONFIG
+source ./tools/set_vim_config.sh
+
 # INSTALL DOCKER
 source ./install_docker.sh
