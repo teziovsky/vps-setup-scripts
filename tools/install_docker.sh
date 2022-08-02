@@ -22,6 +22,8 @@ then
 
     sudo groupadd docker
 
+    sudo usermod -aG docker $USER
+
     sudo docker run hello-world
 
     echo
